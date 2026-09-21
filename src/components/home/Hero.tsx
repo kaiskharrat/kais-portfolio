@@ -44,7 +44,7 @@ export default function Hero() {
           style={{ height: 'calc(90vw + 64px)' }}
         >
           <Image
-            src={isLight ? '/kais-hero-light.webp' : '/kais-hero-mobile.webp'}
+            src={isLight ? '/kais-hero-mobile-light.webp' : '/kais-hero-mobile.webp'}
             alt="Kais Kharrat"
             fill
             className="object-cover"
