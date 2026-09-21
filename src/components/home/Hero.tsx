@@ -36,41 +36,35 @@ export default function Hero() {
       )}
 
       {/* ═══════════════════════ MOBILE LAYOUT ═══════════════════════ */}
-      <div className="lg:hidden relative overflow-hidden">
+      <div className="lg:hidden">
 
-        {/* Image — right side, bleeds behind transparent navbar */}
+        {/* Image — full width, top, bleeds behind transparent navbar */}
         <div
-          className="absolute right-0 top-0 w-[60%] overflow-hidden"
-          style={{ height: 'calc(68vw + 64px)' }}
+          className="relative w-full overflow-hidden"
+          style={{ height: 'calc(90vw + 64px)' }}
         >
           <Image
-            src={heroSrc}
+            src="/kais-hero-mobile.webp"
             alt="Kais Kharrat"
             fill
             className="object-cover"
-            style={{ objectPosition: 'right top' }}
+            style={{ objectPosition: 'center top' }}
             priority
-            sizes="60vw"
-          />
-          {/* Left fade — blends image into background */}
-          <div
-            className="absolute inset-0 pointer-events-none z-10"
-            style={{ background: 'linear-gradient(to right, var(--bg) 0%, transparent 55%)' }}
+            sizes="100vw"
           />
           {/* Bottom fade */}
           <div
             className="absolute inset-0 pointer-events-none z-10"
-            style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 40%)' }}
+            style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 30%)' }}
           />
         </div>
 
-        {/* Content — overlaps lower portion of image */}
+        {/* Content — below image */}
         <motion.div
           variants={container}
           initial="hidden"
           animate="show"
-          className="container relative z-10 pb-12"
-          style={{ paddingTop: 'calc(50vw + 64px)' }}
+          className="container relative z-10 pt-6 pb-12"
         >
           {/* Badge */}
           <motion.div variants={item} className="flex items-center gap-2 mb-4">
