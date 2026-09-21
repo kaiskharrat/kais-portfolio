@@ -41,7 +41,7 @@ export default function Hero() {
           alt="Kais Kharrat"
           fill
           className="object-cover"
-          style={{ objectPosition: isLight ? 'center 0%' : '80% 0%' }}
+          style={{ objectPosition: 'center 10%' }}
           priority
           sizes="100vw"
         />
@@ -59,8 +59,8 @@ export default function Hero() {
           {/* ── TEXT ── */}
           <motion.div variants={container} initial="hidden" animate="show">
 
-            {/* Badge */}
-            <motion.div variants={item} className="flex items-center gap-2 mb-5 lg:mb-8">
+            {/* Badge — mobile only; desktop has it too close to the navbar */}
+            <motion.div variants={item} className="flex lg:hidden items-center gap-2 mb-5">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
@@ -130,7 +130,7 @@ export default function Hero() {
             initial={{ opacity: 0, scale: 0.95, x: 30 }}
             animate={{ opacity: 1, scale: 1, x: 0 }}
             transition={{ duration: 1, delay: 0.25, ease: 'easeOut' }}
-            className="hidden lg:flex relative justify-end"
+            className="hidden lg:flex relative justify-end pr-8"
           >
             {isLight ? (
               <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16 / 9', maxHeight: '500px' }}>
