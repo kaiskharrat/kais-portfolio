@@ -6,14 +6,13 @@ export interface Project {
   category: ProjectCategory
   shortDescription: string
   description: string
-  coverImage: string          // placeholder — replace with real image path
+  coverImage: string
   images: string[]
   technologies: string[]
   services?: string[]
   role: string
   year: string
   featured: boolean
-  // Case study fields
   challenge?: string
   approach?: string
   solution?: string
@@ -27,88 +26,154 @@ export interface Project {
 
 export const technologyProjects: Project[] = [
   {
-    title: 'SmartHire',
-    slug: 'smarthire',
+    title: 'TNBot',
+    slug: 'tnbot',
     category: 'technology',
-    shortDescription: 'AI-powered recruitment platform that automates candidate screening and shortlisting.',
+    shortDescription: 'SaaS tool that captures customer orders automatically from TikTok Live streams.',
     description:
-      'SmartHire is a full-stack recruitment SaaS platform that uses AI to analyse CVs, match candidates to job requirements, and automate the shortlisting process — reducing time-to-hire significantly.',
-    coverImage: 'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1551434678-e076c223a692?w=1200&q=80',
+      'TNBot is a real-time order capture platform built for TikTok Live sellers in Tunisia. It listens to live stream comments, extracts order data (name, quantity, phone number) and pushes it directly into a CRM dashboard — eliminating manual note-taking during live sales.',
+    coverImage: '/projects/tnbot.png',
+    images: ['/projects/tnbot.png'],
+    technologies: ['Node.js', 'WebSocket', 'TikTok API', 'React', 'MySQL'],
+    role: 'Full-Stack Developer & Product Owner',
+    year: '2025',
+    featured: true,
+    liveUrl: 'https://tnbot.live',
+    challenge:
+      'Tunisian e-commerce sellers run live TikTok sales with hundreds of simultaneous comments. Manually capturing orders causes errors, missed customers and lost revenue.',
+    approach:
+      'Built a real-time WebSocket pipeline that connects to TikTok Live, reads incoming comments, applies NLP pattern matching to extract order intent, and populates a live CRM dashboard.',
+    solution:
+      'Live dashboard showing active viewers, orders captured, and revenue tracked in real time. Sellers can manage and confirm orders without leaving the stream.',
+    results: 'Deployed and used by active TikTok sellers in Tunisia.',
+    metrics: [
+      { label: 'Orders captured (demo)', value: '521+' },
+      { label: 'Revenue tracked', value: '18 803 DT' },
+      { label: 'Live viewers tracked', value: '126' },
     ],
-    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'AI API', 'PostgreSQL', 'REST API'],
-    role: 'Full-Stack Developer & Product Designer',
+  },
+  {
+    title: 'ZenithGrowth Agency',
+    slug: 'zenithgrowth',
+    category: 'technology',
+    shortDescription: 'Agency website for a UAE growth & commerce agency — Next.js, bilingual (EN/AR).',
+    description:
+      'Full website for ZenithGrowth, a UAE-based performance marketing and e-commerce agency. Built with Next.js, fully bilingual (English and Arabic), with a live Meta Ads dashboard mockup, case studies and a strategy call booking flow.',
+    coverImage: '/projects/zenith.png',
+    images: ['/projects/zenith.png'],
+    technologies: ['Next.js', 'TypeScript', 'Tailwind CSS', 'Framer Motion', 'i18n'],
+    role: 'Full-Stack Developer & Designer',
+    year: '2025',
+    featured: true,
+    liveUrl: 'https://zenithgrowth-agency-git-master-kais-kharrats-projects.vercel.app/en',
+    challenge:
+      'Build a premium agency site that communicates authority in the UAE market, supports both LTR and RTL layouts, and converts visitors into strategy call bookings.',
+    approach:
+      'Designed a dark, high-contrast layout with animated metrics. Implemented next-intl for full EN/AR i18n with automatic RTL layout switching.',
+    solution:
+      'Live dashboard UI showing real-looking Meta Ads metrics (ROAS 4.7x, -31% CPA), animated hero, bilingual routing and a direct Calendly booking integration.',
+    results: 'Deployed and live on Vercel.',
+    metrics: [
+      { label: 'Languages', value: '2 (EN / AR)' },
+      { label: 'Lighthouse score', value: '95+' },
+    ],
+  },
+  {
+    title: 'Davino Store',
+    slug: 'davino',
+    category: 'technology',
+    shortDescription: 'Full e-commerce platform with multi-category store and custom admin panel.',
+    description:
+      'Davino is a full-stack e-commerce website built for a multi-category online store (clothing, electronics, health, kitchen). Includes a custom admin panel for product, order and inventory management — built from scratch without Shopify or WooCommerce.',
+    coverImage: '/projects/davino.webp',
+    images: ['/projects/davino.webp'],
+    technologies: ['Angular', 'Spring Boot', 'MySQL', 'REST API', 'JWT'],
+    role: 'Full-Stack Developer',
     year: '2024',
     featured: true,
+    liveUrl: 'https://davino.ovh',
     challenge:
-      'Recruitment teams waste hours manually reviewing CVs that do not match requirements. The challenge was to build a system that could intelligently pre-screen candidates without losing qualified profiles.',
+      'Build a complete e-commerce platform from scratch that supports multiple product categories, an Arabic-first interface, and a custom admin panel for the store owner.',
     approach:
-      'Designed a multi-step pipeline: CV parsing → AI scoring against job criteria → ranked shortlist with reasoning. Built an intuitive dashboard for recruiters to review, approve or override AI decisions.',
+      'Designed a modular Angular frontend with full RTL support. Built a robust Spring Boot API for product, order and user management with JWT authentication.',
     solution:
-      'AI-assisted candidate scoring with a transparent scoring model that shows recruiters exactly why a candidate was ranked high or low. Integrated with email for automatic candidate communication.',
-    results: '— [INSERT RESULTS PLACEHOLDER] —',
+      'Full shopping experience: product catalog, search, cart, checkout, order tracking and a complete admin dashboard for managing the entire store.',
+    results: 'Live at davino.ovh.',
     metrics: [
-      { label: 'Time-to-hire reduction', value: '[INSERT %]' },
-      { label: 'CVs processed', value: '[INSERT NUMBER]' },
-      { label: 'Match accuracy', value: '[INSERT %]' },
+      { label: 'Product categories', value: '6+' },
+      { label: 'Stack', value: 'Angular + Spring Boot' },
     ],
-    githubUrl: 'https://github.com/kaiskharrat',
+  },
+  {
+    title: 'Ontej Academy',
+    slug: 'ontej',
+    category: 'technology',
+    shortDescription: 'E-learning platform with 4 master class tracks: Video Editing, Design, Freelance, Content.',
+    description:
+      'Ontej is a full e-learning platform built for the Tunisian creator economy. Students can enroll in master class tracks — Video Editing (14 lessons), Graphic Design (17 lessons), Freelance (17 lessons) and Content Creation (5 lessons). Includes authentication, progress tracking and a video player.',
+    coverImage: '/projects/ontej-1.webp',
+    images: ['/projects/ontej-1.webp', '/projects/ontej-2.webp'],
+    technologies: ['Angular', 'Spring Boot', 'MySQL', 'JWT', 'REST API'],
+    role: 'Full-Stack Developer',
+    year: '2024',
+    featured: false,
+    challenge:
+      'Build a structured e-learning platform that handles course enrollment, video streaming and student progress for a non-technical Tunisian audience.',
+    approach:
+      'Built with Angular for a smooth SPA experience and Spring Boot for the backend API. Designed a clear course catalog UI with master class visual cards.',
+    solution:
+      'Platform with 4 course tracks, video lessons, enrollment flow and a student dashboard tracking completion per lesson.',
+    results: 'Deployed and used for online course delivery.',
+    metrics: [
+      { label: 'Course tracks', value: '4' },
+      { label: 'Total lessons', value: '53' },
+      { label: 'Total content', value: '26h+' },
+    ],
+  },
+  {
+    title: 'Elco System',
+    slug: 'elco-system',
+    category: 'technology',
+    shortDescription: 'Showcase website for a French construction & renovation company.',
+    description:
+      'Elco System is a showcase website built for a general construction and renovation company based in Fontenay-sous-Bois, France. The site presents services, past projects and contact information — designed to convert local visitors into quote requests.',
+    coverImage: '/projects/elco.webp',
+    images: ['/projects/elco.webp'],
+    technologies: ['HTML', 'CSS', 'JavaScript'],
+    role: 'Web Developer & Designer',
+    year: '2023',
+    featured: false,
+    liveUrl: 'https://kaiskharrat.github.io/elcosystem/accueil',
+    githubUrl: 'https://github.com/kaiskharrat/elcosystem',
+    results: 'Live on GitHub Pages.',
+    metrics: [
+      { label: 'Market', value: 'France' },
+      { label: 'Goal', value: 'Lead generation' },
+    ],
   },
   {
     title: 'Cura CRM',
     slug: 'cura-crm',
     category: 'technology',
-    shortDescription: 'Custom e-commerce CRM & order management system integrated with delivery APIs.',
+    shortDescription: 'Custom internal CRM and order management system for a fast-growing e-commerce company.',
     description:
-      'A full internal CRM built for Cura, a fast-growing e-commerce company. Handles order management, delivery tracking, agent performance, and customer communication — all in one system.',
+      'A full internal CRM built for Cura, a fast-growing e-commerce company in Sfax. Handles order management, delivery tracking, agent performance, and customer communication — all in one system integrated with two delivery APIs.',
     coverImage: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80',
-    ],
-    technologies: ['Angular', 'Spring Boot', 'MySQL', 'REST APIs', 'JWT', 'Docker'],
+    images: ['https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80'],
+    technologies: ['Angular', 'Spring Boot', 'MySQL', 'REST APIs', 'JWT'],
     role: 'Lead Full-Stack Developer',
-    year: '2024',
-    featured: true,
-    challenge:
-      'Off-the-shelf CRM tools did not fit the specific workflow of the business — order confirmation, delivery follow-up, agent assignment, and analytics all existed in separate tools.',
-    approach:
-      'Built a custom system from scratch with a modular architecture. Integrated two delivery company APIs for real-time order tracking. Designed an intuitive interface for agents with no technical background.',
-    solution:
-      'Single platform for order lifecycle management, from creation to delivery. Real-time delivery API sync, automated status updates, and a performance dashboard for management.',
-    results: 'Deployed in production, used daily by the entire team.',
-    metrics: [
-      { label: 'Team members using CRM', value: '[INSERT NUMBER]' },
-      { label: 'Orders managed', value: '[INSERT NUMBER]' },
-      { label: 'Delivery rate', value: '[INSERT %]' },
-    ],
-    githubUrl: 'https://github.com/kaiskharrat',
-  },
-  {
-    title: 'Automation Workflow System',
-    slug: 'automation-system',
-    category: 'technology',
-    shortDescription: 'n8n-based automation connecting Meta Ads, CRM, delivery APIs and reporting.',
-    description:
-      'A series of automation workflows built with n8n that connects Meta Ads data, order management, delivery status and business reporting into a single automated pipeline.',
-    coverImage: 'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1518770660439-4636190af475?w=1200&q=80',
-    ],
-    technologies: ['n8n', 'Meta Ads API', 'REST APIs', 'Webhooks', 'AI APIs'],
-    role: 'Automation Engineer',
     year: '2024',
     featured: false,
     challenge:
-      'Manual processes for order confirmation, ad reporting, and delivery follow-up were taking hours daily and causing errors.',
+      'Off-the-shelf CRM tools did not fit the specific workflow — order confirmation, delivery follow-up, agent assignment and analytics all existed in separate tools.',
     approach:
-      'Mapped every manual process and rebuilt it as an automated workflow. Used n8n as the central orchestration engine with webhooks and API integrations.',
+      'Built a custom system from scratch with modular architecture. Integrated two delivery company APIs for real-time tracking.',
     solution:
-      'Fully automated pipeline from ad click to delivery confirmation. Automated reporting dashboards updated in real time.',
-    results: '— [INSERT RESULTS PLACEHOLDER] —',
+      'Single platform for order lifecycle management — from creation to delivery. Real-time delivery sync, automated status updates and a performance dashboard.',
+    results: 'Deployed in production, used daily by the full team.',
     metrics: [
-      { label: 'Hours saved per week', value: '[INSERT]' },
-      { label: 'Automated workflows', value: '[INSERT NUMBER]' },
+      { label: 'Team members', value: '6' },
+      { label: 'Delivery APIs', value: '2 integrated' },
     ],
   },
 ]
@@ -117,48 +182,30 @@ export const technologyProjects: Project[] = [
 
 export const creativeProjects: Project[] = [
   {
-    title: 'Brand Identity — [Client Name]',
-    slug: 'brand-identity-project',
+    title: 'Velora Paris — Creative & Store',
+    slug: 'velora-paris',
     category: 'creative',
-    shortDescription: 'Complete brand identity: logo, visual system, typography and social media kit.',
+    shortDescription: 'Full e-commerce brand: store setup, product visuals and ad creatives for a French lingerie brand.',
     description:
-      'Full brand identity design for [INSERT CLIENT], including logo design, colour system, typography, brand guidelines and social media visual kit.',
-    coverImage: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5?w=1200&q=80',
-      'https://images.unsplash.com/photo-1634986666676-ec8fd927c23d?w=1200&q=80',
-    ],
+      'Velora Paris is a French lingerie and shapewear brand. I handled the full setup: Shopify store, product pages, visual identity direction, product photography art direction and Meta Ads creatives. Built the brand from store to first sales.',
+    coverImage: '/projects/velora-1.webp',
+    images: ['/projects/velora-1.webp', '/projects/velora-2.webp'],
     technologies: [],
-    services: ['Logo Design', 'Brand Guidelines', 'Typography', 'Colour System', 'Social Media Kit'],
-    role: 'Brand Designer',
-    year: '2024',
+    services: ['Shopify Setup', 'Product Page Design', 'Meta Ads Creatives', 'Brand Direction', 'Video Editing'],
+    role: 'E-commerce Developer & Creative Director',
+    year: '2025',
     featured: true,
-    challenge: '[INSERT CHALLENGE PLACEHOLDER]',
-    approach: '[INSERT APPROACH PLACEHOLDER]',
-    solution: '[INSERT SOLUTION PLACEHOLDER]',
-    results: '[INSERT RESULTS PLACEHOLDER]',
-  },
-  {
-    title: 'E-commerce Creative Campaign',
-    slug: 'ecommerce-creative-campaign',
-    category: 'creative',
-    shortDescription: 'Product visuals, video ads and Meta Ads creatives for an e-commerce launch.',
-    description:
-      'A full creative production for an e-commerce product launch — product photography direction, video editing, motion graphics and performance ad creatives tested across Meta Ads.',
-    coverImage: 'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1542744094-3a31f272c490?w=1200&q=80',
-    ],
-    technologies: [],
-    services: ['Video Editing', 'Premiere Pro', 'CapCut', 'Meta Ads Creatives', 'Product Photography'],
-    role: 'Creative Director & Video Editor',
-    year: '2024',
-    featured: true,
-    results: '— [INSERT METRICS: CPA, CTR, ROAS] —',
+    liveUrl: 'https://veloraparis.shop',
+    challenge:
+      'Launch a lingerie brand from scratch on the French market — competitive niche with high creative expectations and a need for immediate conversion.',
+    approach:
+      'Designed a clean, premium Shopify store. Produced ad creatives focused on product quality and comfort messaging. Ran Meta Ads targeting French women.',
+    solution:
+      'Full Shopify store with optimised product pages, Velora brand identity, and a library of video and static creatives for Meta Ads.',
+    results: 'Store live and generating sales on the French market.',
     metrics: [
-      { label: 'CPA', value: '[INSERT]' },
-      { label: 'CTR', value: '[INSERT %]' },
-      { label: 'Videos produced', value: '[INSERT NUMBER]' },
+      { label: 'Market', value: 'France' },
+      { label: 'Platform', value: 'Shopify' },
     ],
   },
 ]
@@ -170,54 +217,49 @@ export const ecommerceProjects: Project[] = [
     title: 'Cura — E-commerce Operations',
     slug: 'cura-ecommerce',
     category: 'ecommerce',
-    shortDescription: 'Full e-commerce operations: Meta Ads management, CRM, team leadership and performance systems.',
+    shortDescription: 'Full e-commerce operations: Meta Ads management across 18 accounts, CRM and team leadership.',
     description:
-      'Led the technology and growth side of Cura, a fast-growing e-commerce company in Sfax. Managed 18 Meta Ads accounts, built internal systems, led a team and drove performance marketing.',
+      'Led the technology and growth side of Cura, a fast-growing e-commerce company in Sfax. Managed 18 Meta Ads accounts, built internal systems, led a team of 6 and drove performance marketing — from ad creative to delivery.',
     coverImage: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80',
-    ],
+    images: ['https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?w=1200&q=80'],
     technologies: ['Meta Ads API', 'Meta Pixel', 'n8n', 'Converty', 'CRM'],
     services: ['Performance Marketing', 'Meta Ads', 'E-commerce Operations', 'Team Management'],
     role: 'E-commerce & Systems Specialist',
-    year: '2024',
+    year: '2024 – Present',
     featured: true,
     challenge:
-      'Scaling an e-commerce operation from a small setup to a structured, high-performance business while managing ads, operations, systems and creative simultaneously.',
+      'Scale an e-commerce operation while managing ads, operations, systems and creative simultaneously across multiple product lines.',
     approach:
-      'Built internal systems to automate repetitive operations. Created structured workflows for the team. Focused on reducing CPA through creative testing and audience optimisation.',
+      'Built internal systems to automate repetitive operations. Structured workflows for the team. Focused on CPA reduction through creative testing and audience optimisation.',
     solution:
-      'Combination of custom CRM, automation workflows and structured Meta Ads strategy across 18 accounts.',
-    results: '— [INSERT BUSINESS RESULTS] —',
+      'Custom CRM + automation workflows + structured Meta Ads strategy across 18 accounts with weekly performance reporting.',
+    results: 'High-volume operation running with a 6-person team.',
     metrics: [
       { label: 'Ad accounts managed', value: '18' },
-      { label: 'Average CPA', value: '[INSERT]' },
-      { label: 'Delivery rate', value: '[INSERT %]' },
-      { label: 'ROAS', value: '[INSERT]' },
       { label: 'Team size', value: '6' },
+      { label: 'Automation workflows', value: '10+' },
     ],
   },
   {
-    title: 'Landing Page & Conversion System',
-    slug: 'landing-page-conversion',
+    title: 'ZenithGrowth — Performance Marketing',
+    slug: 'zenith-ecom',
     category: 'ecommerce',
-    shortDescription: 'High-converting landing page with creative testing, Meta Pixel events and conversion tracking.',
+    shortDescription: 'Performance marketing setup for UAE e-commerce clients — Meta Ads, ROAS 4.7x, CPA -31%.',
     description:
-      'Designed and built a high-converting product landing page with full Meta Pixel integration, custom conversion events and A/B creative testing across ad sets.',
-    coverImage: 'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=1200&q=80',
-    images: [
-      'https://images.unsplash.com/photo-1553729459-efe14ef6055d?w=1200&q=80',
-    ],
-    technologies: ['Next.js', 'Meta Pixel', 'Custom Events', 'Converty', 'A/B Testing'],
-    services: ['Landing Page Design', 'Conversion Optimisation', 'Meta Pixel', 'Analytics'],
-    role: 'Developer & Performance Marketer',
-    year: '2024',
+      'Growth and performance marketing operations for ZenithGrowth UAE clients. Meta Ads campaign setup, creative testing, audience segmentation and conversion tracking — targeting the UAE and GCC market.',
+    coverImage: '/projects/zenith.png',
+    images: ['/projects/zenith.png'],
+    technologies: ['Meta Ads', 'Meta Pixel', 'Shopify', 'Analytics'],
+    services: ['Performance Marketing', 'Meta Ads', 'CRO', 'Creative Testing'],
+    role: 'Performance Marketing Specialist',
+    year: '2025',
     featured: true,
-    results: '— [INSERT CONVERSION RATE, CPA, ROAS] —',
+    results: 'ROAS 4.7x, CPA reduced by 31%, +38% revenue growth.',
     metrics: [
-      { label: 'Conversion rate', value: '[INSERT %]' },
-      { label: 'CPA', value: '[INSERT]' },
-      { label: 'ROAS', value: '[INSERT]' },
+      { label: 'ROAS', value: '4.7x' },
+      { label: 'CPA reduction', value: '-31%' },
+      { label: 'Revenue growth', value: '+38%' },
+      { label: 'Market', value: 'UAE / GCC' },
     ],
   },
 ]
