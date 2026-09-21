@@ -21,7 +21,7 @@ export default function Hero() {
   const isLight = theme === 'light'
 
   return (
-    <section className="relative lg:min-h-screen flex flex-col lg:items-center overflow-hidden">
+    <section className="relative overflow-hidden">
       {/* Radial glow — dark only, desktop only */}
       {!isLight && (
         <div
@@ -34,26 +34,27 @@ export default function Hero() {
         />
       )}
 
-      {/* ── MOBILE FULL-BLEED IMAGE — outside grid, no padding, bleeds to top ── */}
-      <div className="lg:hidden relative w-full overflow-hidden" style={{ height: 'calc(56vw + 64px)' }}>
+      {/* ── MOBILE: full-bleed image, bleeds under navbar ── */}
+      <div className="lg:hidden relative w-full overflow-hidden" style={{ height: 'calc(62vw + 64px)' }}>
         <Image
           src={isLight ? '/kais-hero-light.webp' : '/kais-hero.webp'}
           alt="Kais Kharrat"
           fill
-          className="object-cover object-top"
+          className="object-cover"
+          style={{ objectPosition: isLight ? 'center 0%' : '80% 0%' }}
           priority
           sizes="100vw"
         />
-        {/* Bottom fade to merge into background */}
+        {/* Bottom fade */}
         <div
           className="absolute inset-0 pointer-events-none z-10"
-          style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 30%)' }}
+          style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 35%)' }}
         />
       </div>
 
-      {/* ── MAIN CONTAINER ── */}
-      <div className="container relative z-10 pt-5 pb-10 lg:pt-28 lg:pb-16 w-full">
-        <div className="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center">
+      {/* ── Container ── */}
+      <div className="container relative z-10 pt-5 pb-12 lg:pt-36 lg:pb-24">
+        <div className="grid lg:grid-cols-2 lg:gap-16 items-center">
 
           {/* ── TEXT ── */}
           <motion.div variants={container} initial="hidden" animate="show">
@@ -132,7 +133,7 @@ export default function Hero() {
             className="hidden lg:flex relative justify-end"
           >
             {isLight ? (
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16 / 9', maxHeight: '480px' }}>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16 / 9', maxHeight: '500px' }}>
                 <Image
                   src="/kais-hero-light.webp"
                   alt="Kais Kharrat — Digital Builder"
@@ -145,7 +146,7 @@ export default function Hero() {
                   style={{ background: 'linear-gradient(to right, var(--bg) 0%, transparent 35%)' }} />
               </div>
             ) : (
-              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1 / 1.1', maxHeight: '520px' }}>
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1 / 1.1', maxHeight: '600px' }}>
                 <Image
                   src="/kais-hero.webp"
                   alt="Kais Kharrat — Digital Builder"
