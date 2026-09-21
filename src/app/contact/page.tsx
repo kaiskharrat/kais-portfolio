@@ -10,7 +10,7 @@ const contactMethods = [
   { icon: Phone,       label: 'WhatsApp',  value: '+216 29 536 778',         href: 'https://wa.me/21629536778' },
   { icon: MapPin,      label: 'Location',  value: 'Sfax, Tunisia — Remote',  href: null },
   { icon: ExternalLink,label: 'LinkedIn',  value: 'linkedin.com/in/kais-kharrat', href: 'https://www.linkedin.com/in/kais-kharrat-964418251/' },
-  { icon: ExternalLink,label: 'GitHub',    value: 'github.com/[INSERT]',     href: 'https://github.com/[INSERT]' },
+  { icon: ExternalLink,label: 'GitHub',    value: 'github.com/kaiskharrat',   href: 'https://github.com/kaiskharrat' },
   { icon: ExternalLink,label: 'Instagram', value: '@[INSERT]',               href: 'https://instagram.com/[INSERT]' },
 ]
 

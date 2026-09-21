@@ -69,7 +69,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://github.com/[INSERT]"
+                  href="https://github.com/kaiskharrat"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-[var(--fg-muted)] hover:text-[var(--fg)] transition-colors duration-200 flex items-center gap-2"

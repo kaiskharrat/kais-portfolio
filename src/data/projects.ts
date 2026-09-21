@@ -39,6 +39,7 @@ export const technologyProjects: Project[] = [
     year: '2025',
     featured: true,
     liveUrl: 'https://tnbot.live',
+    githubUrl: 'https://github.com/kaiskharrat',
     challenge:
       'Tunisian e-commerce sellers run live TikTok sales with hundreds of simultaneous comments. Manually capturing orders causes errors, missed customers and lost revenue.',
     approach:
@@ -66,6 +67,7 @@ export const technologyProjects: Project[] = [
     year: '2025',
     featured: true,
     liveUrl: 'https://zenithgrowth-agency-git-master-kais-kharrats-projects.vercel.app/en',
+    githubUrl: 'https://github.com/kaiskharrat',
     challenge:
       'Build a premium agency site that communicates authority in the UAE market, supports both LTR and RTL layouts, and converts visitors into strategy call bookings.',
     approach:
