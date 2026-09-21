@@ -21,11 +21,11 @@ export default function Hero() {
   const isLight = theme === 'light'
 
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden">
-      {/* Radial glow — dark only */}
+    <section className="relative lg:min-h-screen flex items-center overflow-hidden">
+      {/* Radial glow — dark only, desktop only */}
       {!isLight && (
         <div
-          className="pointer-events-none absolute top-0 right-0 w-[700px] h-full opacity-20"
+          className="pointer-events-none absolute top-0 right-0 w-[700px] h-full opacity-20 hidden lg:block"
           style={{
             background: 'radial-gradient(ellipse at 60% 40%, rgba(249,115,22,0.45) 0%, transparent 65%)',
             filter: 'blur(60px)',
@@ -34,14 +34,75 @@ export default function Hero() {
         />
       )}
 
-      <div className="container relative z-10 pt-24 pb-12 lg:pt-28 lg:pb-16">
-        <div className="grid lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+      <div className="container relative z-10 pt-20 pb-10 lg:pt-28 lg:pb-16">
+        <div className="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center">
 
-          {/* ── LEFT: Text ── */}
-          <motion.div variants={container} initial="hidden" animate="show">
+          {/* ── PHOTO — first on mobile, right on desktop ── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.97 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
+            className="relative flex justify-center lg:justify-end order-first lg:order-last"
+          >
+            {isLight ? (
+              <div
+                className="relative w-full overflow-hidden rounded-2xl lg:rounded-none"
+                style={{ height: 'clamp(220px, 58vw, 480px)' }}
+              >
+                <Image
+                  src="/kais-hero-light.webp"
+                  alt="Kais Kharrat — Digital Builder"
+                  fill
+                  className="object-cover object-top lg:object-right"
+                  priority
+                  sizes="(max-width: 1024px) 92vw, 45vw"
+                />
+                {/* Desktop-only left fade */}
+                <div
+                  className="hidden lg:block absolute inset-0 pointer-events-none z-10"
+                  style={{ background: 'linear-gradient(to right, var(--bg) 0%, transparent 35%)' }}
+                />
+              </div>
+            ) : (
+              <div
+                className="relative w-full overflow-hidden rounded-2xl lg:rounded-none"
+                style={{ height: 'clamp(240px, 65vw, 520px)' }}
+              >
+                <Image
+                  src="/kais-hero.webp"
+                  alt="Kais Kharrat — Digital Builder"
+                  fill
+                  className="object-cover object-top lg:object-right"
+                  priority
+                  sizes="(max-width: 1024px) 92vw, 45vw"
+                />
+                {/* Desktop-only fades */}
+                <div
+                  className="hidden lg:block absolute inset-0 pointer-events-none z-10"
+                  style={{ background: 'linear-gradient(to right, var(--bg) 0%, transparent 45%)' }}
+                />
+                <div
+                  className="hidden lg:block absolute inset-0 pointer-events-none z-10"
+                  style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 30%)' }}
+                />
+                {/* Mobile: subtle bottom fade */}
+                <div
+                  className="lg:hidden absolute inset-0 pointer-events-none z-10"
+                  style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 25%)' }}
+                />
+              </div>
+            )}
+          </motion.div>
 
+          {/* ── TEXT ── */}
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="order-last lg:order-first"
+          >
             {/* Badge */}
-            <motion.div variants={item} className="flex items-center gap-2 mb-6 lg:mb-8">
+            <motion.div variants={item} className="flex items-center gap-2 mb-5 lg:mb-8">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
                 <span className="relative inline-flex h-2 w-2 rounded-full bg-green-400" />
@@ -50,32 +111,32 @@ export default function Hero() {
             </motion.div>
 
             {/* Name */}
-            <motion.div variants={item} className="mb-3">
+            <motion.div variants={item} className="mb-2 lg:mb-3">
               <h1
-                className="text-[var(--fg)] leading-none font-bold tracking-tight whitespace-nowrap"
-                style={{ fontSize: 'clamp(2.4rem, 6vw, 5.5rem)' }}
+                className="text-[var(--fg)] leading-none font-bold tracking-tight"
+                style={{ fontSize: 'clamp(2.6rem, 8vw, 5.5rem)' }}
               >
                 Kais Kharrat
               </h1>
             </motion.div>
 
             {/* Title */}
-            <motion.div variants={item} className="mb-5 lg:mb-7">
+            <motion.div variants={item} className="mb-4 lg:mb-7">
               <span className="text-hero gradient-accent">Digital Builder</span>
             </motion.div>
 
             {/* Tagline */}
-            <motion.p variants={item} className="text-lg md:text-xl lg:text-2xl text-[var(--fg-muted)] leading-relaxed mb-3 font-light">
+            <motion.p variants={item} className="text-lg lg:text-2xl text-[var(--fg-muted)] leading-relaxed mb-2 lg:mb-3 font-light">
               I design, build and grow digital experiences.
             </motion.p>
 
-            {/* Sub */}
-            <motion.p variants={item} className="text-sm md:text-base text-[var(--fg-subtle)] leading-relaxed mb-8 lg:mb-10 max-w-md">
+            {/* Sub — hidden on mobile */}
+            <motion.p variants={item} className="hidden lg:block text-base text-[var(--fg-subtle)] leading-relaxed mb-10 max-w-md">
               Software engineer working at the intersection of technology, creativity and e-commerce.
             </motion.p>
 
             {/* CTAs */}
-            <motion.div variants={item} className="flex flex-col sm:flex-row gap-3 mb-8 lg:mb-12">
+            <motion.div variants={item} className="flex flex-col sm:flex-row gap-3 mt-6 lg:mt-0 mb-6 lg:mb-12">
               <Link
                 href="/#work"
                 className="group inline-flex items-center justify-center gap-2 px-6 py-3.5 bg-[var(--accent)] hover:bg-[var(--accent-lt)] text-white font-medium rounded-xl transition-all duration-200 text-sm"
@@ -92,8 +153,8 @@ export default function Hero() {
               </Link>
             </motion.div>
 
-            {/* Disciplines */}
-            <motion.div variants={item} className="flex flex-wrap items-center gap-2">
+            {/* Disciplines — desktop only */}
+            <motion.div variants={item} className="hidden lg:flex flex-wrap items-center gap-2">
               <span className="text-xs text-[var(--fg-subtle)] mr-1">Disciplines ·</span>
               {['Software Engineering', 'Brand Design', 'E-commerce', 'Performance Marketing', 'Automation', 'Video Editing'].map((d) => (
                 <span
@@ -104,61 +165,6 @@ export default function Hero() {
                 </span>
               ))}
             </motion.div>
-          </motion.div>
-
-          {/* ── RIGHT: Photo ── */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, x: 30 }}
-            animate={{ opacity: 1, scale: 1, x: 0 }}
-            transition={{ duration: 1, delay: 0.25, ease: 'easeOut' }}
-            className="relative flex justify-center lg:justify-end"
-          >
-            {isLight ? (
-              /* Light mode — white bg photo, no overlays needed */
-              <div
-                className="relative w-full overflow-hidden"
-                style={{ aspectRatio: '16 / 9', maxHeight: '480px' }}
-              >
-                <Image
-                  src="/kais-hero-light.webp"
-                  alt="Kais Kharrat — Digital Builder"
-                  fill
-                  className="object-cover object-right"
-                  priority
-                  sizes="(max-width: 1024px) 90vw, 45vw"
-                />
-                {/* Subtle fade left to blend into light bg */}
-                <div
-                  className="absolute inset-0 pointer-events-none z-10"
-                  style={{ background: 'linear-gradient(to right, var(--bg) 0%, transparent 35%)' }}
-                />
-              </div>
-            ) : (
-              /* Dark mode — orange glow photo */
-              <div
-                className="relative w-full overflow-hidden"
-                style={{ aspectRatio: '1 / 1.1', maxHeight: '520px' }}
-              >
-                <Image
-                  src="/kais-hero.webp"
-                  alt="Kais Kharrat — Digital Builder"
-                  fill
-                  className="object-cover object-right"
-                  priority
-                  sizes="(max-width: 1024px) 90vw, 45vw"
-                />
-                {/* Fade left */}
-                <div
-                  className="absolute inset-0 pointer-events-none z-10"
-                  style={{ background: 'linear-gradient(to right, var(--bg) 0%, transparent 45%)' }}
-                />
-                {/* Fade bottom */}
-                <div
-                  className="absolute inset-0 pointer-events-none z-10"
-                  style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 30%)' }}
-                />
-              </div>
-            )}
           </motion.div>
 
         </div>
