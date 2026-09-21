@@ -53,7 +53,9 @@ export default function Hero() {
       </div>
 
       {/* ── Container ── */}
-      <div className="container relative z-10 pt-5 pb-12 lg:pt-52 lg:pb-24">
+      <div className="container relative z-10 pt-5 pb-12 lg:pb-24">
+        {/* Desktop spacer — pushes content below navbar */}
+        <div className="hidden lg:block" style={{ height: '140px' }} />
         <div className="grid lg:grid-cols-2 lg:gap-16 items-center">
 
           {/* ── TEXT ── */}
