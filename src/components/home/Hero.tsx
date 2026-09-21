@@ -21,7 +21,7 @@ export default function Hero() {
   const isLight = theme === 'light'
 
   return (
-    <section className="relative lg:min-h-screen flex items-center overflow-hidden">
+    <section className="relative lg:min-h-screen flex flex-col lg:items-center overflow-hidden">
       {/* Radial glow — dark only, desktop only */}
       {!isLight && (
         <div
@@ -34,73 +34,30 @@ export default function Hero() {
         />
       )}
 
-      <div className="container relative z-10 pt-20 pb-10 lg:pt-28 lg:pb-16">
+      {/* ── MOBILE FULL-BLEED IMAGE — outside grid, no padding, bleeds to top ── */}
+      <div className="lg:hidden relative w-full overflow-hidden" style={{ height: 'calc(56vw + 64px)' }}>
+        <Image
+          src={isLight ? '/kais-hero-light.webp' : '/kais-hero.webp'}
+          alt="Kais Kharrat"
+          fill
+          className="object-cover object-top"
+          priority
+          sizes="100vw"
+        />
+        {/* Bottom fade to merge into background */}
+        <div
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 30%)' }}
+        />
+      </div>
+
+      {/* ── MAIN CONTAINER ── */}
+      <div className="container relative z-10 pt-5 pb-10 lg:pt-28 lg:pb-16 w-full">
         <div className="grid lg:grid-cols-2 gap-6 lg:gap-16 items-center">
 
-          {/* ── PHOTO — first on mobile, right on desktop ── */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.97 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
-            className="relative flex justify-center lg:justify-end order-first lg:order-last"
-          >
-            {isLight ? (
-              <div
-                className="relative w-full overflow-hidden rounded-2xl lg:rounded-none"
-                style={{ height: 'clamp(220px, 58vw, 480px)' }}
-              >
-                <Image
-                  src="/kais-hero-light.webp"
-                  alt="Kais Kharrat — Digital Builder"
-                  fill
-                  className="object-cover object-top lg:object-right"
-                  priority
-                  sizes="(max-width: 1024px) 92vw, 45vw"
-                />
-                {/* Desktop-only left fade */}
-                <div
-                  className="hidden lg:block absolute inset-0 pointer-events-none z-10"
-                  style={{ background: 'linear-gradient(to right, var(--bg) 0%, transparent 35%)' }}
-                />
-              </div>
-            ) : (
-              <div
-                className="relative w-full overflow-hidden rounded-2xl lg:rounded-none"
-                style={{ height: 'clamp(240px, 65vw, 520px)' }}
-              >
-                <Image
-                  src="/kais-hero.webp"
-                  alt="Kais Kharrat — Digital Builder"
-                  fill
-                  className="object-cover object-top lg:object-right"
-                  priority
-                  sizes="(max-width: 1024px) 92vw, 45vw"
-                />
-                {/* Desktop-only fades */}
-                <div
-                  className="hidden lg:block absolute inset-0 pointer-events-none z-10"
-                  style={{ background: 'linear-gradient(to right, var(--bg) 0%, transparent 45%)' }}
-                />
-                <div
-                  className="hidden lg:block absolute inset-0 pointer-events-none z-10"
-                  style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 30%)' }}
-                />
-                {/* Mobile: subtle bottom fade */}
-                <div
-                  className="lg:hidden absolute inset-0 pointer-events-none z-10"
-                  style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 25%)' }}
-                />
-              </div>
-            )}
-          </motion.div>
-
           {/* ── TEXT ── */}
-          <motion.div
-            variants={container}
-            initial="hidden"
-            animate="show"
-            className="order-last lg:order-first"
-          >
+          <motion.div variants={container} initial="hidden" animate="show">
+
             {/* Badge */}
             <motion.div variants={item} className="flex items-center gap-2 mb-5 lg:mb-8">
               <span className="relative flex h-2 w-2">
@@ -130,7 +87,7 @@ export default function Hero() {
               I design, build and grow digital experiences.
             </motion.p>
 
-            {/* Sub — hidden on mobile */}
+            {/* Sub — desktop only */}
             <motion.p variants={item} className="hidden lg:block text-base text-[var(--fg-subtle)] leading-relaxed mb-10 max-w-md">
               Software engineer working at the intersection of technology, creativity and e-commerce.
             </motion.p>
@@ -165,6 +122,44 @@ export default function Hero() {
                 </span>
               ))}
             </motion.div>
+          </motion.div>
+
+          {/* ── DESKTOP PHOTO ── */}
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95, x: 30 }}
+            animate={{ opacity: 1, scale: 1, x: 0 }}
+            transition={{ duration: 1, delay: 0.25, ease: 'easeOut' }}
+            className="hidden lg:flex relative justify-end"
+          >
+            {isLight ? (
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '16 / 9', maxHeight: '480px' }}>
+                <Image
+                  src="/kais-hero-light.webp"
+                  alt="Kais Kharrat — Digital Builder"
+                  fill
+                  className="object-cover object-right"
+                  priority
+                  sizes="45vw"
+                />
+                <div className="absolute inset-0 pointer-events-none z-10"
+                  style={{ background: 'linear-gradient(to right, var(--bg) 0%, transparent 35%)' }} />
+              </div>
+            ) : (
+              <div className="relative w-full overflow-hidden" style={{ aspectRatio: '1 / 1.1', maxHeight: '520px' }}>
+                <Image
+                  src="/kais-hero.webp"
+                  alt="Kais Kharrat — Digital Builder"
+                  fill
+                  className="object-cover object-right"
+                  priority
+                  sizes="45vw"
+                />
+                <div className="absolute inset-0 pointer-events-none z-10"
+                  style={{ background: 'linear-gradient(to right, var(--bg) 0%, transparent 45%)' }} />
+                <div className="absolute inset-0 pointer-events-none z-10"
+                  style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 30%)' }} />
+              </div>
+            )}
           </motion.div>
 
         </div>
