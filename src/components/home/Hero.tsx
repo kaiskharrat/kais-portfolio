@@ -50,6 +50,11 @@ export default function Hero() {
           className="absolute inset-0 pointer-events-none z-10"
           style={{ background: 'linear-gradient(to top, var(--bg) 0%, transparent 35%)' }}
         />
+        {/* Right edge fade — blends image dark bg into site bg */}
+        <div
+          className="absolute inset-0 pointer-events-none z-10"
+          style={{ background: 'linear-gradient(to left, var(--bg) 0%, transparent 25%)' }}
+        />
       </div>
 
       {/* ── Container ── */}
