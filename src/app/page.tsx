@@ -3,6 +3,7 @@ import Hero from '@/components/home/Hero'
 import AboutStrip from '@/components/home/AboutStrip'
 import ThreeSides from '@/components/home/ThreeSides'
 import SelectedWork from '@/components/home/SelectedWork'
+import VideoReels from '@/components/home/VideoReels'
 
 export default function HomePage() {
   return (
@@ -11,6 +12,7 @@ export default function HomePage() {
       <AboutStrip />
       <ThreeSides />
       <SelectedWork />
+      <VideoReels />
     </PageWrapper>
   )
 }
