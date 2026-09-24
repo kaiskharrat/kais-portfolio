@@ -3,6 +3,7 @@ import PageWrapper from '@/components/layout/PageWrapper'
 import PortfolioHero from '@/components/sections/PortfolioHero'
 import ProjectCard from '@/components/ui/ProjectCard'
 import SectionHeader from '@/components/ui/SectionHeader'
+import VideoReels from '@/components/home/VideoReels'
 import { creativeProjects } from '@/data/projects'
 
 export const metadata: Metadata = {
@@ -37,6 +38,8 @@ export default function CreativePage() {
           </div>
         </div>
       </section>
+
+      <VideoReels />
 
       {/* Services */}
       <section className="py-24 border-t border-[var(--border)]">
